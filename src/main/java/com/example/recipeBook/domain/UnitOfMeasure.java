@@ -2,26 +2,20 @@ package com.example.recipeBook.domain;
 
 import jakarta.persistence.*;
 
-import java.math.BigDecimal;
-
 /**
  * @author Jardel Brandao
  * @date 03/03/2025
  */
 @Entity
-public class Ingredient {
+public class UnitOfMeasure {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String description;
-    private BigDecimal amount;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    private UnitOfMeasure uom;
-
-    @ManyToOne
-    private Recipe recipe;
+    @OneToOne
+    private Ingredient ingredient;
 
     public Long getId() {
         return id;
@@ -39,19 +33,11 @@ public class Ingredient {
         this.description = description;
     }
 
-    public BigDecimal getAmount() {
-        return amount;
+    public Ingredient getIngredient() {
+        return ingredient;
     }
 
-    public void setAmount(BigDecimal amount) {
-        this.amount = amount;
-    }
-
-    public Recipe getRecipe() {
-        return recipe;
-    }
-
-    public void setRecipe(Recipe recipe) {
-        this.recipe = recipe;
+    public void setIngredient(Ingredient ingredient) {
+        this.ingredient = ingredient;
     }
 }
