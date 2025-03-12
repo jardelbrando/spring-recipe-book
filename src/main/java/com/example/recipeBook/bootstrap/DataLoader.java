@@ -117,9 +117,9 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 
         Recipe spinachAndStrawberrySalad = new Recipe();
         spinachAndStrawberrySalad.setDescription("Spinach strawberry salad");
-        spinachAndStrawberrySalad.setPrepTime(10);
-        spinachAndStrawberrySalad.setCookTime(10);
-        spinachAndStrawberrySalad.setServings(8);
+        spinachAndStrawberrySalad.setPrepTime(Integer.valueOf(10));
+        spinachAndStrawberrySalad.setCookTime(Integer.valueOf(10));
+        spinachAndStrawberrySalad.setServings(Integer.valueOf(8));
         spinachAndStrawberrySalad.setSource("allrecipes.com");
         spinachAndStrawberrySalad.setUrl("https://www.allrecipes.com/recipe/16409/spinach-and-strawberry-salad/");
         spinachAndStrawberrySalad.setDirections("Step 1"+
@@ -127,14 +127,14 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
                 "Step 2" +
                 "\nWhisk oil, sugar, vinegar, sesame seeds, poppy seeds, and paprika together in a medium bowl; pour over spinach and strawberries, and toss to coat.\n");
 
-        spinachAndStrawberrySalad.getIngredients().add(new Ingredient("Bunch of spinach", BigDecimal.valueOf(2), bunch, spinachAndStrawberrySalad));
-        spinachAndStrawberrySalad.getIngredients().add(new Ingredient("Sliced strawberrys", BigDecimal.valueOf(4), cup, spinachAndStrawberrySalad));
-        spinachAndStrawberrySalad.getIngredients().add(new Ingredient("Some vegetable oil of preference", BigDecimal.valueOf(0.5), cup, spinachAndStrawberrySalad));
-        spinachAndStrawberrySalad.getIngredients().add(new Ingredient("Some whiteSugar", BigDecimal.valueOf(0.5), cup, spinachAndStrawberrySalad));
-        spinachAndStrawberrySalad.getIngredients().add(new Ingredient("Some whiteWineVineger", BigDecimal.valueOf(0.5), cup, spinachAndStrawberrySalad));
-        spinachAndStrawberrySalad.getIngredients().add(new Ingredient("Some sesameSeeds", BigDecimal.valueOf(2), tablespoon, spinachAndStrawberrySalad));
-        spinachAndStrawberrySalad.getIngredients().add(new Ingredient("Some poppySeeds", BigDecimal.valueOf(1), tablespoon, spinachAndStrawberrySalad));
-        spinachAndStrawberrySalad.getIngredients().add(new Ingredient("Some paprika", BigDecimal.valueOf(0.25), teaspoon, spinachAndStrawberrySalad));
+        spinachAndStrawberrySalad.addIngredient(new Ingredient("Bunch of spinach", BigDecimal.valueOf(2), bunch, spinachAndStrawberrySalad));
+        spinachAndStrawberrySalad.addIngredient(new Ingredient("Sliced strawberrys", BigDecimal.valueOf(4), cup, spinachAndStrawberrySalad));
+        spinachAndStrawberrySalad.addIngredient(new Ingredient("Some vegetable oil of preference", BigDecimal.valueOf(0.5), cup, spinachAndStrawberrySalad));
+        spinachAndStrawberrySalad.addIngredient(new Ingredient("Some whiteSugar", BigDecimal.valueOf(0.5), cup, spinachAndStrawberrySalad));
+        spinachAndStrawberrySalad.addIngredient(new Ingredient("Some whiteWineVineger", BigDecimal.valueOf(0.5), cup, spinachAndStrawberrySalad));
+        spinachAndStrawberrySalad.addIngredient(new Ingredient("Some sesameSeeds", BigDecimal.valueOf(2), tablespoon, spinachAndStrawberrySalad));
+        spinachAndStrawberrySalad.addIngredient(new Ingredient("Some poppySeeds", BigDecimal.valueOf(1), tablespoon, spinachAndStrawberrySalad));
+        spinachAndStrawberrySalad.addIngredient(new Ingredient("Some paprika", BigDecimal.valueOf(0.25), teaspoon, spinachAndStrawberrySalad));
 
         spinachAndStrawberrySalad.setDifficulty(Difficulty.EASY);
 
