@@ -4,6 +4,8 @@ import com.example.recipeBook.domain.*;
 import com.example.recipeBook.repositories.CategoryRespository;
 import com.example.recipeBook.repositories.RecipeRepository;
 import com.example.recipeBook.repositories.UnitOfMeasureRepository;
+import jakarta.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
@@ -16,6 +18,7 @@ import java.util.*;
  * @date 06/03/2025
  */
 
+@Slf4j
 @Component
 public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 
@@ -30,8 +33,10 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
     }
 
     @Override
+    @Transactional
     public void onApplicationEvent(ContextRefreshedEvent event) {
         recipeRepository.saveAll(getRecipes());
+        log.debug("Loading Bootstrap data...");
     }
 
     private void checkUOM(){
