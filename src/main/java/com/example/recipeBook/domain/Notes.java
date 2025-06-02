@@ -10,6 +10,7 @@ import lombok.*;
 @Data
 @EqualsAndHashCode(exclude = {"recipe"})
 @Entity
+@ToString(exclude = {"recipe"})
 public class Notes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

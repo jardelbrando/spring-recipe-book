@@ -1,5 +1,7 @@
 package com.example.recipeBook.services;
 
+import com.example.recipeBook.converters.RecipeCommandToRecipe;
+import com.example.recipeBook.converters.RecipeToRecipeCommand;
 import com.example.recipeBook.domain.Recipe;
 import com.example.recipeBook.repositories.RecipeRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -25,10 +27,18 @@ class RecipeServiceImplTest {
     @Mock
     RecipeRepository recipeRepository;
 
+    @Mock
+    RecipeToRecipeCommand recipeToRecipeCommand;
+
+    @Mock
+    RecipeCommandToRecipe recipeCommandToRecipe;
+
+
     @BeforeEach
-    void setUp() throws Exception {
+    public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        recipeService = new RecipeServiceImpl(recipeRepository);
+
+        recipeService = new RecipeServiceImpl(recipeRepository, recipeCommandToRecipe, recipeToRecipeCommand);
     }
 
     @Test
@@ -41,21 +51,24 @@ class RecipeServiceImplTest {
 
         Recipe recipeReturned = recipeService.findById(1L);
 
-        assertNotNull(recipeReturned, "Recipe Not Found!");
+        assertNotNull(recipeReturned, "Null recipe returned");
         verify(recipeRepository, times(1)).findById(anyLong());
         verify(recipeRepository, never()).findAll();
     }
 
     @Test
-    void getAllRecipes() {
+    public void getRecipesTest() throws Exception {
+
         Recipe recipe = new Recipe();
-        HashSet<Recipe> recipeData = new HashSet<>();
-        recipeData.add(recipe);
+        HashSet receipesData = new HashSet();
+        receipesData.add(recipe);
 
-        when(recipeRepository.findAll()).thenReturn(recipeData);
+        when(recipeService.getAllRecipes()).thenReturn(receipesData);
 
-        Set<Recipe> recipeSet = recipeService.getAllRecipes();
-        assertEquals(recipeSet.size(), 1);
+        Set<Recipe> recipes = recipeService.getAllRecipes();
+
+        assertEquals(recipes.size(), 1);
         verify(recipeRepository, times(1)).findAll();
+        verify(recipeRepository, never()).findById(anyLong());
     }
 }

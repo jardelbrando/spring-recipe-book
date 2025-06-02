@@ -2,6 +2,7 @@ package com.example.recipeBook.domain;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,6 +13,7 @@ import java.util.Set;
  */
 @Data
 @Entity
+@ToString(exclude = {"recipe"})
 public class Recipe {
 
     @Id
@@ -48,7 +50,9 @@ public class Recipe {
 
     public void setNotes(Notes notes) {
         this.notes = notes;
-        notes.setRecipe(this);
+        if (notes != null) {
+            notes.setRecipe(this);
+        }
     }
 
     public Recipe addIngredient(Ingredient ingredient){
