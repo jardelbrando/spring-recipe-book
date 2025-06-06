@@ -9,4 +9,5 @@ import org.springframework.stereotype.Repository;
  * @date 03/03/2025
  */
 public interface RecipeRepository extends CrudRepository<Recipe, Long> {
+
 }
