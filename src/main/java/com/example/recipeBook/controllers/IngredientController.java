@@ -63,7 +63,7 @@ public class IngredientController {
 
         model.addAttribute("uomList",  unitOfMeasureService.listAllUOM());
 
-        return "recipe/ingredient/ingredientform";
+        return "recipe/ingredient/ingredientForm";
     }
 
     @GetMapping("recipe/{recipeId}/ingredient/{id}/update")
@@ -72,7 +72,7 @@ public class IngredientController {
         model.addAttribute("ingredient", ingredientService.findByRecipeIdAndIngredientId(Long.valueOf(recipeId), Long.valueOf(id)));
 
         model.addAttribute("uomList", unitOfMeasureService.listAllUOM());
-        return "recipe/ingredient/ingredientform";
+        return "recipe/ingredient/ingredientForm";
     }
 
     @PostMapping("recipe/{recipeId}/ingredient")

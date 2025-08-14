@@ -6,7 +6,6 @@ package com.example.recipeBook.controllers;
  **/
 
 import com.example.recipeBook.commands.RecipeCommand;
-import com.example.recipeBook.domain.Recipe;
 import com.example.recipeBook.services.RecipeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -34,13 +33,13 @@ public class RecipeController {
     public String newRecipe(Model model){
         model.addAttribute("recipe", new RecipeCommand());
 
-        return "recipe/recipeform";
+        return "recipe/recipeForm";
     }
 
     @GetMapping("recipe/{id}/update")
     public String updateRecipe(@PathVariable String id, Model model){
         model.addAttribute("recipe", recipeService.findCommandById(Long.valueOf(id)));
-        return  "recipe/recipeform";
+        return "recipe/recipeForm";
     }
 
     @PostMapping("recipe")
