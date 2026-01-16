@@ -4,6 +4,7 @@ import com.example.recipeBook.commands.RecipeCommand;
 import com.example.recipeBook.converters.RecipeCommandToRecipe;
 import com.example.recipeBook.converters.RecipeToRecipeCommand;
 import com.example.recipeBook.domain.Recipe;
+import com.example.recipeBook.exceptions.NotFoundException;
 import com.example.recipeBook.repositories.RecipeRepository;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
@@ -46,7 +47,8 @@ public class RecipeServiceImpl implements RecipeService {
         Optional<Recipe> recipeOptional = recipeRepository.findById(l);
 
         if (!recipeOptional.isPresent()) {
-            throw new RuntimeException("Recipe Not Found!");
+            //throw new RuntimeException("Recipe Not Found!");
+            throw  new NotFoundException("Recipe Not Found");
         }
 
         return recipeOptional.get();
